@@ -11,6 +11,10 @@ jobs:
     name: Run Tests
     runs-on: ubuntu-latest
 
+    defaults:
+      run:
+        working-directory: BACKEND
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -21,14 +25,7 @@ jobs:
           python-version: "3.11"
 
       - name: Install dependencies
-        run: |
-          pip install flask werkzeug pytest
-          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+        run: pip install -r requirements.txt
 
       - name: Run tests
-        run: |
-          if [ -d tests ]; then
-            pytest tests/ -v
-          else
-            echo "No tests directory found â€” skipping tests"
-          fi
+        run: pytest tests/ -v
