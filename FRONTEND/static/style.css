@@ -1,0 +1,38 @@
+/*
+ * SecureBank — custom style overrides
+ * Bootstrap 5 is the primary styling layer; only targeted tweaks here.
+ */
+
+/* Slight elevation for the main card on login / forms */
+.card {
+  border-radius: 0.6rem;
+}
+
+/* Balance display on dashboard */
+.display-5 {
+  letter-spacing: -0.5px;
+}
+
+/* Navbar brand spacing */
+.navbar-brand {
+  font-size: 1.2rem;
+  letter-spacing: 0.5px;
+}
+
+/* Footer */
+footer {
+  font-size: 0.8rem;
+  color: #6c757d;
+}
+
+/* Input group pound sign */
+.input-group-text {
+  font-weight: 600;
+  color: #495057;
+  background-color: #f8f9fa;
+}
+
+/* Alert refinements */
+.alert {
+  font-size: 0.92rem;
+}

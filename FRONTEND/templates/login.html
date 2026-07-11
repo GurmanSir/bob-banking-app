@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% block title %}Login — SecureBank{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center mt-5">
+  <div class="col-12 col-sm-9 col-md-6 col-lg-5">
+
+    <div class="card shadow-sm">
+      <div class="card-header bg-primary text-white text-center py-3">
+        <h4 class="mb-0 fw-bold">&#127968; SecureBank</h4>
+        <p class="mb-0 small opacity-75">Online Banking Portal</p>
+      </div>
+
+      <div class="card-body p-4">
+
+        <h5 class="card-title mb-4 text-center">Sign In to Your Account</h5>
+
+        <!-- Error alert -->
+        {% if error %}
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          {{ error }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endif %}
+
+        <!-- Login form -->
+        <form method="POST" action="{{ url_for('auth.login_post') }}" novalidate>
+          <div class="mb-3">
+            <label for="username" class="form-label fw-semibold">Username</label>
+            <input
+              type="text"
+              id="username"
+              name="username"
+              class="form-control"
+              placeholder="Enter your username"
+              value="{{ request.form.get('username', '') }}"
+              required
+              autofocus
+            />
+          </div>
+
+          <div class="mb-4">
+            <label for="password" class="form-label fw-semibold">Password</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              class="form-control"
+              placeholder="Enter your password"
+              required
+            />
+          </div>
+
+          <div class="d-grid">
+            <button type="submit" class="btn btn-primary btn-lg">Login</button>
+          </div>
+        </form>
+
+      </div><!-- /card-body -->
+
+      <div class="card-footer text-center text-muted small py-2">
+        Demo credentials: <strong>demo</strong> / <strong>password123</strong>
+      </div>
+    </div><!-- /card -->
+
+  </div>
+</div>
+{% endblock %}

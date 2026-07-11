@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+
+# Virtual environment
+venv/
+.venv/
+env/
+
+# SQLite database
+*.db
+*.sqlite3
+
+# Pytest cache
+.pytest_cache/
+
+# Bob workspace internals
+.bob/
+
+# Lab / demo setup docs (not part of the app)
+docs/
+
+# OS artefacts
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/

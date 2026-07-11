@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block title %}Deposit — SecureBank{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-12 col-sm-9 col-md-6 col-lg-5">
+
+    <div class="card shadow-sm">
+      <div class="card-header bg-success text-white py-3">
+        <h5 class="mb-0 fw-bold">&#8679; Deposit Funds</h5>
+      </div>
+
+      <div class="card-body p-4">
+
+        <!-- Error alert -->
+        {% if error %}
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          {{ error }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endif %}
+
+        <p class="text-muted mb-4">Enter the amount you wish to deposit into your account.</p>
+
+        <form method="POST" action="{{ url_for('account.deposit_post') }}" novalidate>
+          <div class="mb-4">
+            <label for="amount" class="form-label fw-semibold">Amount (&pound;)</label>
+            <div class="input-group input-group-lg">
+              <span class="input-group-text">&pound;</span>
+              <input
+                type="number"
+                id="amount"
+                name="amount"
+                class="form-control"
+                placeholder="0.00"
+                min="0.01"
+                step="0.01"
+                autofocus
+                required
+              />
+            </div>
+          </div>
+
+          <div class="d-grid gap-2">
+            <button type="submit" class="btn btn-success btn-lg">Confirm Deposit</button>
+            <a href="{{ url_for('account.dashboard') }}" class="btn btn-outline-secondary">
+              &larr; Back to Dashboard
+            </a>
+          </div>
+        </form>
+
+      </div><!-- /card-body -->
+    </div><!-- /card -->
+
+  </div>
+</div>
+{% endblock %}

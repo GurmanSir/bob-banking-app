@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block title %}Withdraw — SecureBank{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-12 col-sm-9 col-md-6 col-lg-5">
+
+    <div class="card shadow-sm">
+      <div class="card-header bg-warning text-dark py-3">
+        <h5 class="mb-0 fw-bold">&#8681; Withdraw Funds</h5>
+      </div>
+
+      <div class="card-body p-4">
+
+        <!-- Current balance indicator -->
+        <div class="alert alert-info py-2 mb-4">
+          Available balance: <strong>&pound;{{ "%.2f"|format(balance) }}</strong>
+        </div>
+
+        <!-- Error alert -->
+        {% if error %}
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          {{ error }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endif %}
+
+        <p class="text-muted mb-4">Enter the amount you wish to withdraw from your account.</p>
+
+        <form method="POST" action="{{ url_for('account.withdraw_post') }}" novalidate>
+          <div class="mb-4">
+            <label for="amount" class="form-label fw-semibold">Amount (&pound;)</label>
+            <div class="input-group input-group-lg">
+              <span class="input-group-text">&pound;</span>
+              <input
+                type="number"
+                id="amount"
+                name="amount"
+                class="form-control"
+                placeholder="0.00"
+                min="0.01"
+                step="0.01"
+                autofocus
+                required
+              />
+            </div>
+          </div>
+
+          <div class="d-grid gap-2">
+            <button type="submit" class="btn btn-warning btn-lg text-dark">Confirm Withdrawal</button>
+            <a href="{{ url_for('account.dashboard') }}" class="btn btn-outline-secondary">
+              &larr; Back to Dashboard
+            </a>
+          </div>
+        </form>
+
+      </div><!-- /card-body -->
+    </div><!-- /card -->
+
+  </div>
+</div>
+{% endblock %}
